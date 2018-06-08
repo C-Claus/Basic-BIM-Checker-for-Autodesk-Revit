@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<RevitAddIns>
+<AddIn Type="Application">
+    <Name>Basic BIM Checker</Name>
+	<Assembly>path\basic_bim_checker.dll</Assembly>
+    <FullClassName>basic_bim_checker</FullClassName>
+    <Text>basic_bim_checker</Text>
+    <Description>basic_bim_checker</Description>
+    <VisibilityMode>AlwaysVisible</VisibilityMode>
+    <AddInId>96fb700a-2c85-4888-a78d-31429ecae9ed</AddInId>
+    <VendorId>Basic BIM Checker</VendorId>
+    <VendorDescription>Basic BIM Checker</VendorDescription>
+	<LongDescription>
+	Basic BIM Checker
+	</LongDescription>
+  </AddIn>
+</RevitAddIns>
+
