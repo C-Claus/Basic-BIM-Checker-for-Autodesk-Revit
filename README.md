@@ -24,3 +24,6 @@ A demonstration of the tool can be found on [Youtube](https://www.youtube.com/wa
 
 ![picture](https://s33.postimg.cc/rjxkdfc5b/Basic_BIM_Checker.png)
 
+![picture](https://s33.postimg.cc/u19bkr8xb/levels.png)
+
+
