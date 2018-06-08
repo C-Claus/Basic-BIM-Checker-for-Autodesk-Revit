@@ -4,7 +4,7 @@ A simple lightweight Revit Add-In to check for Categories, Levels and Assembly C
 
 
 
-**Installesr**
+**Installers**
 
 Installers can be found here:
 
