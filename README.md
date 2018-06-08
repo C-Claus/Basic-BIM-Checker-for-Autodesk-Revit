@@ -22,5 +22,5 @@ A demonstration of the tool can be found on [Youtube](https://www.youtube.com/wa
 
 **The Interface**
 
-![picture](https://s7.postimg.cc/5tg40l1nv/GUI.png)
+![picture](https://s33.postimg.cc/rjxkdfc5b/Basic_BIM_Checker.png)
 
