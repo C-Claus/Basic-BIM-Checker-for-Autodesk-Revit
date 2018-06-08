@@ -20,10 +20,17 @@ A demonstration of the tool can be found on [Youtube](https://www.youtube.com/wa
 
 
 
-**The Interface**
-
+**The Interface on the Ribbon Tab**
 ![picture](https://s33.postimg.cc/rjxkdfc5b/Basic_BIM_Checker.png)
 
+
+**The Panel to filter by Level**
 ![picture](https://s33.postimg.cc/u19bkr8xb/levels.png)
+
+
+**The Panel to filter by Assembly Code**
+![picture](https://s33.postimg.cc/u19bkr8xb/levels.png)
+
+
 
 
