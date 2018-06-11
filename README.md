@@ -1,7 +1,7 @@
 # Basic BIM Checker
 A simple lightweight Revit Add-In to check for Categories, Levels and Assembly Code.
 
-**The Interface on the Ribbon Tab**
+**The Interface on the Add-Ins Ribbon Tab**
 
 ![picture](https://s33.postimg.cc/rjxkdfc5b/Basic_BIM_Checker.png)
 
