@@ -12,11 +12,11 @@ A simple lightweight Revit Add-In to check for Categories, Levels and Assembly C
 
 Installers can be found here:
 
-[Revit 2017](https://github.com/C-Claus/BasicBIMChecker/blob/master/Basic_BIM_Checker_installer_REVIT2017.exe)
+[Installer for Revit 2017](https://github.com/C-Claus/BasicBIMChecker/blob/master/Basic_BIM_Checker_installer_REVIT2017.exe)
 
-[Revit 2018](https://github.com/C-Claus/BasicBIMChecker/blob/master/Basic_BIM_Checker_installer_REVIT2018.exe)
+[Installer for Revit 2018](https://github.com/C-Claus/BasicBIMChecker/blob/master/Basic_BIM_Checker_installer_REVIT2018.exe)
 
-[Revit 2019](https://github.com/C-Claus/BasicBIMChecker/blob/master/Basic_BIM_Checker_installer_REVIT2019.exe)
+[Installer for Revit 2019](https://github.com/C-Claus/BasicBIMChecker/blob/master/Basic_BIM_Checker_installer_REVIT2019.exe)
 
 **Demonstration**
 
