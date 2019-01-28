@@ -60,14 +60,14 @@ app = __revit__.Application
 doc = __revit__.ActiveUIDocument.Document
 view = doc.ActiveView
 
-__window__.Hide()
-__window__.Close()
+#__window__.Hide()
+#__window__.Close()
 
 ######################################################################################################
 ################################## Get Built in Categories ###########################################
 ######################################################################################################
                                 
-point_list = ['OST_ProjectBasePoint','OST_SharedBasePoint', 'OST_Site', 'OST_BasePointAxisX', 'OST_BasePointAxisY','OST_BasePointAxisZ'] 
+point_list = ['OST_ProjectBasePoint','OST_SharedBasePoint', 'OST_BasePointAxisX', 'OST_BasePointAxisY','OST_BasePointAxisZ'] 
     
 builtin_categories = System.Enum.GetValues(BuiltInCategory)
 
@@ -80,9 +80,9 @@ for i, builtin_category in [(i, builtin_category) for i in point_list for builti
 		for x in filtered_element_collector.ToElements():
 			if x.LookupParameter("Angle to True North") is not None:
 				total_point_list.append([[str(builtin_category.ToString())[4:], ''],
-											["E/W",x.LookupParameter("E/W").AsDouble()*304.8],
-											["N/S",x.LookupParameter("N/S").AsDouble()*304.8],
-											["Elev",x.LookupParameter("Elev").AsDouble()*304.8],
+											["E/W", x.LookupParameter("E/W").AsValueString()],
+											["N/S",x.LookupParameter("N/S").AsValueString()],
+											["Elev",x.LookupParameter("Elev").AsValueString()],
 											["Pinned", x.Pinned ],
 											["Angle to True North", x.LookupParameter("Angle to True North").AsValueString()],
 											[' ',' ']
@@ -90,14 +90,17 @@ for i, builtin_category in [(i, builtin_category) for i in point_list for builti
 											
 			else:
 				total_point_list.append([[str(builtin_category.ToString())[4:], ''],
-											["E/W",x.LookupParameter("E/W").AsDouble()*304.8],
-											["N/S",x.LookupParameter("N/S").AsDouble()*304.8],
-											["Elev",x.LookupParameter("Elev").AsDouble()*304.8],
+											["E/W",x.LookupParameter("E/W").AsValueString()],
+											["N/S",x.LookupParameter("N/S").AsValueString()],
+											["Elev",x.LookupParameter("Elev").AsValueString()],
 											["Pinned", x.Pinned ],
 										
 											[' ',' ']
 											])
 			
+			
+for i in total_point_list:
+	print i, dir(i)
 
 elements, categories = [], []
 categories_list = []
