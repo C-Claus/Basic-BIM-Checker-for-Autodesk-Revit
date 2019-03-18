@@ -3,7 +3,7 @@ A simple lightweight Revit Add-In to check for Categories, Levels and Assembly C
 
 **The Interface on the Add-Ins Ribbon Tab**
 
-![picture](https://s33.postimg.cc/rjxkdfc5b/Basic_BIM_Checker.png)
+![picture](https://github.com/C-Claus/BasicBIMChecker/blob/master/images/Addln.PNG)
 
 
 
