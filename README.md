@@ -21,7 +21,7 @@ For more information, please visit:
 
 Installers can be found here:
 
-
+[Installer for Revit 2017](https://github.com/C-Claus/BasicBIMChecker/blob/master/Basic_BIM_Checker_installer_REVIT_2017.exe)
 
 [Installer for Revit 2018](https://github.com/C-Claus/BasicBIMChecker/blob/master/Basic_BIM_Checker_installer_REVIT_2018.exe) <- it will give a meaningless error when starting Revit.
 
