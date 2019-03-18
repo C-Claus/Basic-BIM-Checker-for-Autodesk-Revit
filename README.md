@@ -1,5 +1,5 @@
 # Basic BIM Checker
-A simple lightweight Revit Add-In to check for Categories, Levels and Assembly Code.
+A simple lightweight Revit Add-In to check for Categories, 0-Points, Levels, FireRating, Assembly Code and show materials.
 
 **The Interface on the Add-Ins Ribbon Tab**
 
@@ -12,32 +12,42 @@ A simple lightweight Revit Add-In to check for Categories, Levels and Assembly C
 
 Installers can be found here:
 
-[Installer for Revit 2017](https://github.com/C-Claus/BasicBIMChecker/blob/master/Basic_BIM_Checker_installer_REVIT2017.exe)
-
-[Installer for Revit 2018](https://github.com/C-Claus/BasicBIMChecker/blob/master/Basic_BIM_Checker_installer_REVIT2018.exe)
-
-[Installer for Revit 2019](https://github.com/C-Claus/BasicBIMChecker/blob/master/Basic_BIM_Checker_installer_REVIT2019.exe)
-
-**Demonstration**
-
-A demonstration of the tool can be found on [Youtube](https://www.youtube.com/watch?v=A7MJwWqMtdE)
 
 
+[Installer for Revit 2018](https://github.com/C-Claus/BasicBIMChecker/blob/master/Basic_BIM_Checker_installer_REVIT_2018.exe)
+
+[Installer for Revit 2019](https://github.com/C-Claus/BasicBIMChecker/blob/master/Basic_BIM_Checker_installer_REVIT_2019.exe)
+
+
+**The Panel to show the ProjectBasePoint and SharedBasePoint**
+
+![picture](https://github.com/C-Claus/BasicBIMChecker/blob/master/images/points.png)
 
 
 
 
 **The Panel to filter by Level**
 
-![picture](https://s33.postimg.cc/u19bkr8xb/levels.png)
+![picture](https://github.com/C-Claus/BasicBIMChecker/blob/master/images/level_building_storey.png)
 
 
 
 
-**The Panel to filter by Assembly Code**
+**The Panel to filter by Assembly Code inculding Assembly Description**
 
-![picture](https://s33.postimg.cc/in84v85jj/Naamloos.png)
+![picture](https://github.com/C-Claus/BasicBIMChecker/blob/master/images/level_building_storey.png)
 
 
+
+**The Panel to filter by Fire Rating and FireRating**
+
+![picture](https://github.com/C-Claus/BasicBIMChecker/blob/master/images/fire_rating.png)
+
+
+
+
+**The Panel to show Materials**
+
+![picture](https://github.com/C-Claus/BasicBIMChecker/blob/master/images/materials.png)
 
 
