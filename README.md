@@ -13,8 +13,7 @@ For more information, please visit:
 **The Interface on the Add-Ins Ribbon Tab**
 
 ![picture](https://github.com/C-Claus/BasicBIMChecker/blob/master/images/Addln.PNG)
-
-
+[Basic BIM Checker on YouTube](https://youtu.be/OUUwy4Q31wo)
 
 
 **Installers**
