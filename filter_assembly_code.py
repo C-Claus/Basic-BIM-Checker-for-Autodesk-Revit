@@ -1,7 +1,7 @@
-﻿"""
+"""
 MIT License
 
-Copyright (c) 2018 C. Claus 
+Copyright (c) 2019 C. Claus 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -29,6 +29,7 @@ from random import random
 from random import randint
 from math import *
 from collections import OrderedDict
+import itertools
 
 
 clr.AddReference("System.Windows.Forms")
@@ -39,6 +40,9 @@ clr.AddReference("RevitAPIUI")
 import Autodesk
 from Autodesk.Revit.DB import * 
 from Autodesk.Revit.UI import *
+from Autodesk.Revit.UI import IExternalEventHandler, ExternalEvent
+from Autodesk.Revit.DB import Transaction
+from Autodesk.Revit.Exceptions import InvalidOperationException
 
 
 import System
@@ -47,7 +51,7 @@ from System.Collections import *
 from System import *
 from System.Drawing import Point, Icon, Color
 from System.Drawing import Color, Font, FontStyle, Point
-from System.Windows.Forms import (Application, BorderStyle, FormBorderStyle, Button, CheckBox, Form, Label, Panel, ToolTip, RadioButton, CheckedListBox, CheckState)
+from System.Windows.Forms import (Application, BorderStyle, FormBorderStyle, Button, CheckBox, Form, Label, Panel, ToolTip, RadioButton, CheckedListBox, CheckState, PictureBox)
 from System.Drawing import Icon
 
 
@@ -56,11 +60,12 @@ app = __revit__.Application
 doc = __revit__.ActiveUIDocument.Document
 view = doc.ActiveView
 
-
 __window__.Hide()
 __window__.Close()
+
+#CAUTION: RAILINGS ARE NOT ENCLOSED IN ASSEMBLY CODE FILTER
 ######################################################################################################
-###################################Get Built in Categories############################################
+################################## Get Built in Categories ###########################################
 ######################################################################################################
 categories_list = [    
                                 'OST_Walls',
@@ -72,33 +77,42 @@ categories_list = [
                                 'OST_Roofs', 
                                 'OST_Ramps',
                                 'OST_Stairs',
+                                'OST_Site',
                                 'OST_DuctTerminal', 
                                 'OST_Casework',
                                 'OST_CableTray',
                                 'OST_Conduit', 
                                 'OST_ElectricalFixtures',
                                 'OST_Furniture',
-                                'OST_GenericModel',
                                 'OST_Gutter',
+                                'OST_GenericModel',
                                 'OST_MechanicalEquipment',
                                 'OST_PlumbingFixtures',
                                 'OST_Doors',
                                 'OST_Windows',
                                 'OST_CurtainWallMullions',
-                                'OST_CurtainWallPanels'
-                                ]        
-        
+                                'OST_CurtainWallPanels',
+                                'OST_RailingBalusterRail',
+                                'OST_RailingBalusterRailCut',
+                                'OST_RailingHandRail',
+                                'OST_RailingHandRailAboveCut',
+                                'OST_Railings',
+                                'OST_RailingSystem',
+                                'OST_RailingsystemBaluster'
+                                ]  
         
 builtin_categories = System.Enum.GetValues(BuiltInCategory)
+
 
 t1, t2 = [],[]
 categories_assembly_code_list = []
 
 for category, builtin_category in [(category,builtin_category) for category in categories_list for builtin_category in builtin_categories]:
-    if category == builtin_category.ToString():
-        t1.append(FilteredElementCollector(doc).WhereElementIsNotElementType().OfCategory(builtin_category).ToElements())
+	if category == builtin_category.ToString():
+		t1.append(FilteredElementCollector(doc).WhereElementIsNotElementType().OfCategory(builtin_category).ToElements())
         t2.append(builtin_category)
-        
+   
+
 elements, categories = [], []
 categories_list = []
 
@@ -113,46 +127,56 @@ for i in elements:
 
 
 ######################################################################################################
-################################Get Type Parameter Assembly Code######################################
+############################### Get Type Parameter Assembly Code #####################################
 ######################################################################################################
 id_assembly_dict = {}
 assembly_code_list = []
 
+ac_list = []
+ad_list = []
+ac_ad_list = []
+
+empty_list = []
+id_empty_dict = {}
+
+
 for i in categories_list:
-    element_type = doc.GetElement(i.GetTypeId())
-    parameters = element_type.Parameters
 
-    #Retrieve Type Parameters
-    if element_type.LookupParameter('Assembly Code'):
-        assembly_code = element_type.LookupParameter('Assembly Code').AsString()
-        assembly_code_list.append(assembly_code)
-    
-        categories_assembly_code_list.append(assembly_code)
-        id_assembly_dict[doc.GetElement(i.Id)] = assembly_code
-    
-    
+	element_type = doc.GetElement(i.GetTypeId())
+	parameters = element_type.Parameters
+	
+	if element_type.LookupParameter('Assembly Code').AsString():
+		assembly_code = element_type.LookupParameter('Assembly Code').AsString()
+		categories_assembly_code_list.append(assembly_code)
+		id_assembly_dict[doc.GetElement(i.Id)] = assembly_code , element_type.LookupParameter('Assembly Description').AsString()
+	if element_type.LookupParameter('Assembly Code'):
+		empty_assembly_code = element_type.LookupParameter('Assembly Code').AsString()
+		id_empty_dict[doc.GetElement(i.Id)] = empty_assembly_code
+
+
+for key, value in sorted(id_assembly_dict.iteritems(), key=lambda (k,v): (v,k)):
+	#print "%s: %s" % (key, value)
+	ac_list.append(value[0])
+	ac_ad_list.append([value[0], value[1]])
+	
+
+sorted_ac_list = sorted(set(ac_list))
+
+ac_ad_list.sort()
+
+sorted_list =  list(ac_ad_list for ac_ad_list, _ in itertools.groupby(ac_ad_list))
+
+
+
+
 ######################################################################################################
-#####################################Sort Assembly Code List##########################################
-######################################################################################################
-ac_list    = []    
-
-for i in set(assembly_code_list):
-    if i != '':
-        ac_list.append(i)
-    
-sorted_ac_list = sorted(ac_list)
-
-
-
-######################################################################################################
-################################Graphical User Interface Class########################################
+############################### Graphical User Interface Class #######################################
 ######################################################################################################
 width = 500
 height = 990
 
 
-
-class AssemblyFilter(Form):
+class AssemblyFilter(IExternalEventHandler, Form):
     def __init__(self):
         
         self.check_value = []
@@ -161,9 +185,10 @@ class AssemblyFilter(Form):
         self.BorderStyle = BorderStyle.Fixed3D
         self.Width = width
         self.Height = height
-        self.Text = "Assembly Code Filter | Version 1.1"
+        self.Text = "Basic BIM Checker | Assembly Code Filter"
         self.MaximizeBox = False
         self.FormBorderStyle = FormBorderStyle.FixedDialog
+        
         
         self.Controls.Add(self.header(0,0))
         self.Controls.Add(self.panel(0,80))
@@ -227,25 +252,35 @@ class AssemblyFilter(Form):
         self.panel.BorderStyle = BorderStyle.Fixed3D
         self.panel.BackColor = Color.White
         self.panel.AutoScroll = True
-
-        j=30
         
-        for i in range(0, len(sorted_ac_list)):
-            self.checkbox = CheckBox()
-            self.checkbox.Text = str(sorted_ac_list[i])
-            self.checkbox.Location = Point(35,j)
-            j+=25
-            self.checkbox.Width = width-95
-            self.checkbox.Font= Font("Calibri Light",10)    
-            self.panel.Controls.Add(self.checkbox)
-            self.check_value.append(self.checkbox)
-
-            
-        return self.panel
+        j=30
+   
+        for i in sorted_list:
+        
+        	self.checkbox = CheckBox()
+        	self.checkbox.Text = i[0] 
+        	self.checkbox.Location = Point(35,j)
+        	self.checkbox.Font = Font("Calibri Light", 10)
+        	
+        	self.checkbox_description = Label()
+        	self.checkbox_description.Text = i[1]
+        	self.checkbox_description.Location = Point(150,j+2)
+        	self.checkbox_description.Width = 500
+        	
+        	self.checkbox_description.Font = Font("Calibri Light", 10)
+        	self.panel.Controls.Add(self.checkbox)
+        	self.panel.Controls.Add(self.checkbox_description)
+        	self.check_value.append(self.checkbox)
+        	
+        	j += 25
+        
+        
+        return self.panel	
+  
             
     def footer(self, x, y):
 
-        button_width = (500/3)-6
+        button_width = (width/3)-6
         
         self.button_filter_selection = Button()
         self.button_filter_selection.Text = 'Filter Selection'
@@ -285,7 +320,7 @@ class AssemblyFilter(Form):
 
 
     def update(self, sender, event):
-        
+ 
         for f in self.check_value:
             if f.Checked == True:
                 self.selected_code_list.append(f.Text)
@@ -331,16 +366,15 @@ class AssemblyFilter(Form):
 
         element_instances = []
 
-        for i, v in id_assembly_dict.iteritems():
-            if v == '':
-                element_instances.append(i.Id)
-                ids.append(i.Id)
+        for i, v in id_empty_dict.iteritems():
+        	if len(v) == 0:
+        		element_instances.append(i.Id)
+        		ids.append(i.Id)
                     
         self.sublabel_objects.Text = "Number of Objects Current Selection: " + str(len(ids))
         assembly_codes_selected = '-'
         self.sublabel.Text = "Number of Assembly Codes Selected: " + str(assembly_codes_selected)
         
-  
 
         #Hide Reset Active View
         t = Transaction(doc, 'Reset HideIsolate')    
@@ -358,8 +392,7 @@ class AssemblyFilter(Form):
 
    
     def check_for_selected_code(self, selected_code):
-    
-        #print selected_code
+  
         if len(selected_code) == 0:
         	
         	self.sublabel_no_selection.Text = "Please select an Assembly Code First!"
@@ -369,12 +402,13 @@ class AssemblyFilter(Form):
 	        self.sublabel.Text = "Number of Assembly Codes Selected: " + str(len(selected_code))
 	
 	        ids = list()
-	
+	        
 	        for i, v in id_assembly_dict.iteritems():
-	            if len(v) > 1:
-	                for code in selected_code:
-	                    if v.startswith(code):
-	                        ids.append(i.Id)
+	        	if len(v) > 1:
+	        		for code in selected_code:
+	        			if v[0] ==  code:
+	        				ids.append(i.Id)
+	        			
 	                
 	        self.sublabel_objects.Text = "Number of Objects Current Selection: " + str(len(ids))
 	        
@@ -391,14 +425,19 @@ class AssemblyFilter(Form):
 	        t.Start()    
 	        view.IsolateElementsTemporary(idElements)
 	        t.Commit()
-
-#print view.LookupParameter('View Name').AsString()        
+    
 
 
 form = AssemblyFilter()
-#Application.Run(form)
-form.ShowDialog()
+
 #form.BringToFront
+#Application.Run(form)
+#form.ShowDialog()
+#form.BringToFront
+#external_event = ExternalEvent.Create(form)
+form.ShowDialog()
+
+#Application.Run(form)
 
 
 __window__.Hide()
