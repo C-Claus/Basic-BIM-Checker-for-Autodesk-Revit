@@ -3,18 +3,22 @@
   <RibbonPanel text="Basic BIM Checker">
     <!-- the script is always searched relative to the location of the RpsAddin xml file -->
 
-	
 	<SplitButton text="Filter Revit Category" >
-		<PushButton text="Filter Walls" src="filter_walls.py" largeImage="U:\\09. Python scripts\\Basic_BIM_Checker\\basic_bim_icons_dpi90\\filter_category_walls.png" />
-		<PushButton text="Filter Floors" src="filter_floors.py" largeImage="U:\\09. Python scripts\\Basic_BIM_Checker\\basic_bim_icons_dpi90\\filter_category_floors.png"  />
-		<PushButton text="Filter Ceilings" src="filter_ceilings.py" largeImage="U:\\09. Python scripts\\Basic_BIM_Checker\\basic_bim_icons_dpi90\\filter_category_ceilings.png"  />
-		<PushButton text="Filter Structural Framing" src="filter_structural_framing.py" largeImage="U:\\09. Python scripts\\Basic_BIM_Checker\\basic_bim_icons_dpi90\\filter_category_structuralframing.png"  />
-		<PushButton text="Filter Columns" src="filter_columns.py" largeImage="U:\\09. Python scripts\\Basic_BIM_Checker\\basic_bim_icons_dpi90\\filter_category_columns.png"  />
-		<PushButton text="Filter Generic Models" src="filter_generic_models.py" largeImage="U:\\09. Python scripts\\Basic_BIM_Checker\\basic_bim_icons_dpi90\\filter_category_genericmodels.png"  />
+		<PushButton text="Filter Walls" src="filter_walls.py" largeImage="U:\\01_python_revit_documentatie\\00_python_scripts\\01_basic_bim_checker\\basic_bim_icons_dpi90\\filter_category_walls.png" />
+		<PushButton text="Filter Floors" src="filter_floors.py" largeImage="U:\\01_python_revit_documentatie\\00_python_scripts\\01_basic_bim_checker\\basic_bim_icons_dpi90\\filter_category_floors.png"  />
+		<PushButton text="Filter Ceilings" src="filter_ceilings.py" largeImage="U:\\01_python_revit_documentatie\\00_python_scripts\\01_basic_bim_checker\\basic_bim_icons_dpi90\\filter_category_ceilings.png"  />
+		<PushButton text="Filter Structural Framing" src="filter_structural_framing.py" largeImage="U:\\01_python_revit_documentatie\\00_python_scripts\\01_basic_bim_checker\\basic_bim_icons_dpi90\\filter_category_structuralframing.png"  />
+		<PushButton text="Filter Columns" src="filter_columns.py" largeImage="U:\\01_python_revit_documentatie\\00_python_scripts\\01_basic_bim_checker\\basic_bim_icons_dpi90\\filter_category_columns.png"  />
+		<PushButton text="Filter Doors" src="filter_doors.py" largeImage="U:\\01_python_revit_documentatie\\00_python_scripts\\01_basic_bim_checker\\basic_bim_icons_dpi90\\filter_category_doors.png"  />
+		<PushButton text="Filter Windows" src="filter_windows.py" largeImage="U:\\01_python_revit_documentatie\\00_python_scripts\\01_basic_bim_checker\\basic_bim_icons_dpi90\\filter_category_windows.png"  />
+		<PushButton text="Filter Generic Models" src="filter_generic_models.py" largeImage="U:\\01_python_revit_documentatie\\00_python_scripts\\01_basic_bim_checker\\basic_bim_icons_dpi90\\filter_category_genericmodels.png"  />
 	</SplitButton>
 	
-	<PushButton text="Filter&#13;&#10;Level" src="filter_level.py" largeImage="U:\\09. Python scripts\\Basic_BIM_Checker\\basic_bim_icons_dpi90\\filter_level.png" />
-	<PushButton text="Filter&#13;&#10;Assembly Code" src="filter_assembly_code.py" largeImage="U:\\09. Python scripts\\Basic_BIM_Checker\\basic_bim_icons_dpi90\\filter_assembly_code.png" />
+	<PushButton text="Get Origin" src="get_points.py" largeImage="U:\\01_python_revit_documentatie\\00_python_scripts\\01_basic_bim_checker\\basic_bim_icons_dpi90\\origins_point.png" />
+	<PushButton text="Filter&#13;&#10;Level" src="filter_level.py" largeImage="U:\\01_python_revit_documentatie\\00_python_scripts\\01_basic_bim_checker\\basic_bim_icons_dpi90\\filter_level.png" />
+	<PushButton text="Filter&#13;&#10;Assembly Code" src="filter_assembly_code.py" largeImage="U:\\01_python_revit_documentatie\\00_python_scripts\\01_basic_bim_checker\\basic_bim_icons_dpi90\\filter_assembly_code.png" />
+	<PushButton text="Filter&#13;&#10;FireRating" src="filter_fire_rating.py" largeImage="U:\\01_python_revit_documentatie\\00_python_scripts\\01_basic_bim_checker\\basic_bim_icons_dpi90\\filter_fire_rating.png" />
+	<PushButton text="Get&#13;&#10;Materials" src="get_materials.py" largeImage="U:\\01_python_revit_documentatie\\00_python_scripts\\01_basic_bim_checker\\basic_bim_icons_dpi90\\get_materials.png" />
 
   </RibbonPanel>
 </RpsAddin>
