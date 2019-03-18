@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Basic BIM Checker"
-#define MyAppVersion "1.1"
+#define MyAppVersion "2.0"
 #define MyAppPublisher "C. Claus"
 #define MyAppURL "https://github.com/C-Claus"
 
@@ -11,7 +11,7 @@
 ; NOTE: The value of AppId uniquely identifies this application.
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{HC0D320E-887B-4C32-A03E-5C4816B5275F}
+AppId={{177D58CB-ACDA-41E1-8331-81490653CA65}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
@@ -20,8 +20,8 @@ AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
 DefaultDirName={pf}\Basic_BIM_Checker_2018
-DefaultGroupName=Basic_BIM_Checker
-OutputBaseFilename=Basic_BIM_Checker_installer_REVIT2018
+DefaultGroupName=Basic_BIM_Checker_2018
+OutputBaseFilename=Basic_BIM_Checker_installer_REVIT_2018
 Compression=lzma
 SolidCompression=yes
 
@@ -30,26 +30,31 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Files]
 ; DLL
-Source: "U:\09. Python scripts\Basic_BIM_Checker\basic_bim_checker\basic_bim_checker.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "U:\09. Python scripts\Basic_BIM_Checker\basic_bim_checker\IronPython.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "U:\09. Python scripts\Basic_BIM_Checker\basic_bim_checker\IronPython.Modules.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "U:\09. Python scripts\Basic_BIM_Checker\basic_bim_checker\Microsoft.Dynamic.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "U:\09. Python scripts\Basic_BIM_Checker\basic_bim_checker\Microsoft.Scripting.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "U:\09. Python scripts\Basic_BIM_Checker\basic_bim_checker\Microsoft.Scripting.Metadata.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "U:\09. Python scripts\Basic_BIM_Checker\basic_bim_checker\RpsRuntime.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "U:\01_python_revit_documentatie\00_python_scripts\01_basic_bim_checker\Output_basic_bim_checker\basic_bim_checker.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "U:\01_python_revit_documentatie\00_python_scripts\01_basic_bim_checker\Output_basic_bim_checker\IronPython.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "U:\01_python_revit_documentatie\00_python_scripts\01_basic_bim_checker\Output_basic_bim_checker\IronPython.Modules.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "U:\01_python_revit_documentatie\00_python_scripts\01_basic_bim_checker\Output_basic_bim_checker\Microsoft.Dynamic.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "U:\01_python_revit_documentatie\00_python_scripts\01_basic_bim_checker\Output_basic_bim_checker\Microsoft.Scripting.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "U:\01_python_revit_documentatie\00_python_scripts\01_basic_bim_checker\Output_basic_bim_checker\Microsoft.Scripting.Metadata.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "U:\01_python_revit_documentatie\00_python_scripts\01_basic_bim_checker\Output_basic_bim_checker\RpsRuntime.dll"; DestDir: "{app}"; Flags: ignoreversion
 
 ; Images
-Source: "U:\09. Python scripts\Basic_BIM_Checker\basic_bim_icons_dpi90\filter_assembly_code.png"; DestDir: "{app}"; Flags: ignoreversion
-Source: "U:\09. Python scripts\Basic_BIM_Checker\basic_bim_icons_dpi90\filter_category_ceilings.png"; DestDir:  "{app}"; Flags: ignoreversion
-Source: "U:\09. Python scripts\Basic_BIM_Checker\basic_bim_icons_dpi90\filter_category_columns.png"; DestDir: "{app}"; Flags: ignoreversion
-Source: "U:\09. Python scripts\Basic_BIM_Checker\basic_bim_icons_dpi90\filter_category_floors.png"; DestDir: "{app}"; Flags: ignoreversion
-Source: "U:\09. Python scripts\Basic_BIM_Checker\basic_bim_icons_dpi90\filter_category_genericmodels.png"; DestDir: "{app}"; Flags: ignoreversion
-Source: "U:\09. Python scripts\Basic_BIM_Checker\basic_bim_icons_dpi90\filter_category_structuralframing.png"; DestDir: "{app}"; Flags: ignoreversion
-Source: "U:\09. Python scripts\Basic_BIM_Checker\basic_bim_icons_dpi90\filter_category_walls.png"; DestDir: "{app}"; Flags: ignoreversion
-Source: "U:\09. Python scripts\Basic_BIM_Checker\basic_bim_icons_dpi90\filter_level.png"; DestDir: "{app}"; Flags: ignoreversion
+Source: "U:\01_python_revit_documentatie\00_python_scripts\01_basic_bim_checker\Output_basic_bim_checker\filter_assembly_code.png"; DestDir: "{app}"; Flags: ignoreversion
+Source: "U:\01_python_revit_documentatie\00_python_scripts\01_basic_bim_checker\Output_basic_bim_checker\filter_category_ceilings.png"; DestDir:  "{app}"; Flags: ignoreversion
+Source: "U:\01_python_revit_documentatie\00_python_scripts\01_basic_bim_checker\Output_basic_bim_checker\filter_category_columns.png"; DestDir: "{app}"; Flags: ignoreversion
+Source: "U:\01_python_revit_documentatie\00_python_scripts\01_basic_bim_checker\Output_basic_bim_checker\filter_category_floors.png"; DestDir: "{app}"; Flags: ignoreversion
+Source: "U:\01_python_revit_documentatie\00_python_scripts\01_basic_bim_checker\Output_basic_bim_checker\filter_category_genericmodels.png"; DestDir: "{app}"; Flags: ignoreversion
+Source: "U:\01_python_revit_documentatie\00_python_scripts\01_basic_bim_checker\Output_basic_bim_checker\filter_category_structuralframing.png"; DestDir: "{app}"; Flags: ignoreversion
+Source: "U:\01_python_revit_documentatie\00_python_scripts\01_basic_bim_checker\Output_basic_bim_checker\filter_category_walls.png"; DestDir: "{app}"; Flags: ignoreversion
+Source: "U:\01_python_revit_documentatie\00_python_scripts\01_basic_bim_checker\Output_basic_bim_checker\filter_category_doors.png"; DestDir: "{app}"; Flags: ignoreversion
+Source: "U:\01_python_revit_documentatie\00_python_scripts\01_basic_bim_checker\Output_basic_bim_checker\filter_category_windows.png"; DestDir: "{app}"; Flags: ignoreversion
+Source: "U:\01_python_revit_documentatie\00_python_scripts\01_basic_bim_checker\Output_basic_bim_checker\filter_level.png"; DestDir: "{app}"; Flags: ignoreversion
+Source: "U:\01_python_revit_documentatie\00_python_scripts\01_basic_bim_checker\Output_basic_bim_checker\filter_fire_rating.png"; DestDir: "{app}"; Flags: ignoreversion
+Source: "U:\01_python_revit_documentatie\00_python_scripts\01_basic_bim_checker\Output_basic_bim_checker\get_materials.png"; DestDir: "{app}"; Flags: ignoreversion
+Source: "U:\01_python_revit_documentatie\00_python_scripts\01_basic_bim_checker\Output_basic_bim_checker\origins_point.png"; DestDir: "{app}"; Flags: ignoreversion
 
 ; Addin file
-Source: "U:\09. Python scripts\Basic_BIM_Checker\basic_bim_checker.addin"; DestDir: "{%ProgramData}\Autodesk\Revit\Addins\2018"; Flags: ignoreversion
+Source: "U:\01_python_revit_documentatie\00_python_scripts\01_basic_bim_checker\basic_bim_checker.addin"; DestDir: "{%ProgramData}\Autodesk\Revit\Addins\2018"; Flags: ignoreversion
 
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 

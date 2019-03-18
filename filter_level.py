@@ -41,7 +41,7 @@ clr.AddReference("RevitAPIUI")
 import Autodesk
 from Autodesk.Revit.DB import * 
 from Autodesk.Revit.UI import *
-
+from Autodesk.Revit.UI import IExternalEventHandler, ExternalEvent
 
 import System
 from System.Collections.Generic import *
@@ -173,7 +173,7 @@ height = 990
 
 
 
-class LevelFilter(Form):
+class LevelFilter(IExternalEventHandler, Form):
     def __init__(self):
         
         self.check_value = []
@@ -182,7 +182,7 @@ class LevelFilter(Form):
         self.BorderStyle = BorderStyle.Fixed3D
         self.Width = width
         self.Height = height
-        self.Text = "Level Filter | Version 1.0"
+        self.Text = "Basic BIM  Checker | Level Filter"
         self.MaximizeBox = False
         self.FormBorderStyle = FormBorderStyle.FixedDialog
         
@@ -419,9 +419,15 @@ class LevelFilter(Form):
 
 
 form = LevelFilter()
-#Application.Run(form)
-form.ShowDialog()
+
 #form.BringToFront
+#Application.Run(form)
+#form.ShowDialog()
+#form.BringToFront
+external_event = ExternalEvent.Create(form)
+form.ShowDialog()
+#Application.Run(form)
+#Application.Run(form)
 
 
 __window__.Hide()

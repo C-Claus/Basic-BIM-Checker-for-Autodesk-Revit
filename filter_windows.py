@@ -14,8 +14,8 @@ view = doc.ActiveView
 
 __window__.Hide()
 
-wall_collector = FilteredElementCollector(doc).OfCategory(BuiltInCategory.OST_Walls)
-wall_instances = wall_collector.OfCategory(BuiltInCategory.OST_Walls).WhereElementIsNotElementType()
+window_collector = FilteredElementCollector(doc).OfCategory(BuiltInCategory.OST_Windows)
+window_instances = window_collector.OfCategory(BuiltInCategory.OST_Windows).WhereElementIsNotElementType()
 
 ids = list()
 
@@ -24,7 +24,7 @@ t.Start()
 view.TemporaryViewModes.DeactivateAllModes()
 t.Commit()
 
-for i in wall_instances:
+for i in window_instances:
 	ids.append(i.Id)
 	
 idElements = List[ElementId](ids)

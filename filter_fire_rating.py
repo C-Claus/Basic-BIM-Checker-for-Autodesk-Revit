@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
+#Script searches for the value of the Fire()Rating parameter in 4
 
 import clr
 import sys
@@ -60,8 +61,8 @@ view = doc.ActiveView
 
 
 
-#__window__.Hide()
-#__window__.Close()
+__window__.Hide()
+__window__.Close()
 ######################################################################################################
 ###################################Get Built in Categories############################################
 ######################################################################################################
@@ -137,15 +138,27 @@ for i in categories_list:
     element_type = doc.GetElement(i.GetTypeId())
     parameters = element_type.Parameters
     
+    if i.LookupParameter('Fire Rating'):
+    	f_r = i.LookupParameter('Fire Rating').AsString()
+    	
+    	if f_r is not None:
+    		if f_r != '':
+    			firerating_list.append(str(f_r))
+    			fire_rating_dict[doc.GetElement(i.Id)] = 'Fire Rating', f_r
+    			
+    		else:
+    			firerating_dict_empty[doc.GetElement(i.Id)] = f_r
+
+    	
     
-    #Retrieve Instance Parameters 
+    #Retrieve Instance Parameter FireRating 
     if i.LookupParameter('FireRating'):
-    	
     	firerating = i.LookupParameter('FireRating').AsString()
-    	
+    
     	if firerating is not None:
     		if firerating != '':
     			firerating_list.append(str(firerating))
+    		
     			#firerating_dict[doc.GetElement(i.Id)] = firerating
     			fire_rating_dict[doc.GetElement(i.Id)] = 'FireRating: ', firerating
     		else:
@@ -179,12 +192,12 @@ fire_rating_string = 'Fire Rating: '
 fire_rating_list_2 = [ fire_rating_string + str(x) for x in fire_rating_list]
  
 
-ac_list = []
-ac_list = fire_rating_list_2 + firerating_list_2
+fr_list = []
+fr_list = fire_rating_list_2 + firerating_list_2
 
 total_fire_rating_list = []
 
-for i in ac_list:
+for i in fr_list:
 	if i.endswith('None') == False:
 		total_fire_rating_list.append(str(i))
 		
@@ -192,7 +205,7 @@ for i in ac_list:
 		total_fire_rating_list.append(str(i))
 		
 
-total_fire_rating_list = list(set(ac_list))
+total_fire_rating_list = list(set(fr_list))
 
 
 
@@ -247,12 +260,12 @@ class FireRatingFilter(IExternalEventHandler, Form):
         self.sublabel.ForeColor = Color.Black
         
         self.sublabel_no_selection = Label()
-        self.sublabel_no_selection.Text = ""
-        self.sublabel_no_selection.Location = Point(x+40, y+50)
+        self.sublabel_no_selection.Text = "Parameters shown below include type and instance"
+        self.sublabel_no_selection.Location = Point(x+40, y+63)
         self.sublabel_no_selection.Width = width-200
-        self.sublabel_no_selection.Font = Font("Calibri Light", 12, style)
+        self.sublabel_no_selection.Font = Font("Calibri Light", 8)
         #self.sublabel_no_selection.ForeColor = Color.White 
-        #self.sublabel.Height = 10
+        self.sublabel.Height = 20
         self.sublabel.ForeColor = Color.Black
         
         self.warning_label = Label()
@@ -260,16 +273,16 @@ class FireRatingFilter(IExternalEventHandler, Form):
         self.warning_label.Font = Font("Calibri", 8)
         self.warning_label.Width = width
         self.warning_label.Height = 12
-        self.warning_label.Location = Point(x+40, y+53)
+        self.warning_label.Location = Point(x+40, y+40)
         self.warning_label.ForeColor = Color.Black
         
         self.warning_sublabel = Label()
         self.warning_sublabel.Text = "(with space) and the BuildingSmart definition FireRating parameter (without space)"
         self.warning_sublabel.Font = Font("Calibri", 8)
         self.warning_sublabel.Width = width
-        self.warning_sublabel.Location = Point(x+40, y+70)
+        self.warning_sublabel.Location = Point(x+40, y+50)
         
-        
+
         self.header = Panel()
         self.header.Width = width
         self.header.Height = 80
@@ -281,10 +294,12 @@ class FireRatingFilter(IExternalEventHandler, Form):
 
         self.header.Controls.Add(self.sublabel)
         #self.header.Controls.Add(self.sublabel_objects)
-        #self.header.Controls.Add(self.sublabel_no_selection)
+        self.header.Controls.Add(self.sublabel_no_selection)
         self.header.Controls.Add(self.warning_label)
         self.header.Controls.Add(self.warning_sublabel)
+        #self.header.Controls.Add(self.warning_parameters)
         self.header.AutoScroll = True
+        
 
     
         return self.header
@@ -308,6 +323,7 @@ class FireRatingFilter(IExternalEventHandler, Form):
             j+=25
             self.checkbox.Width = width-95
             self.checkbox.Font= Font("Calibri Light",10)    
+            
             self.panel.Controls.Add(self.checkbox)
             self.check_value.append(self.checkbox)
 
@@ -334,7 +350,7 @@ class FireRatingFilter(IExternalEventHandler, Form):
         self.button_clear_selection.Click += self.uncheck_checkboxes
         
         self.button_objects_without_code = Button()
-        self.button_objects_without_code.Text = 'Objects without value for Fire Rating'
+        self.button_objects_without_code.Text = 'Objects without value'
         self.button_objects_without_code.Location = Point(button_width,0)
         self.button_objects_without_code.Width = button_width
         self.button_objects_without_code.Height = 50
@@ -401,20 +417,17 @@ class FireRatingFilter(IExternalEventHandler, Form):
         ids = list()
 
         element_instances = []
-        
-		
+
         for i, v in firerating_dict_empty.iteritems():
-        	#print i, v 
         	if v == None:
         		element_instances.append(i.Id)
         		ids.append(i.Id)
         	if v == '':
         		element_instances.append(i.Id)
         		ids.append(i.Id)
+        
         		
-        		
-
-                    
+          
         self.sublabel_objects.Text = "Number of Objects Current Selection: " + str(len(ids))
         fire_rating_selected = '-'
         self.sublabel.Text = "Number of Fire Rating Selected: " + str(fire_rating_selected)
@@ -449,14 +462,10 @@ class FireRatingFilter(IExternalEventHandler, Form):
 	
 	        ids = list()
 	        
-	        print fire_rating_dict
-
 	
 	        for i, v in fire_rating_dict.iteritems():
 	        	x = v[0] + v[1]
-	        	print 'x', x
-        		for code in selected_code:
-        			print 'code', code
+	        	for code in selected_code:
         			if str(x) == code:
         				ids.append(i.Id)
 	           
@@ -481,9 +490,9 @@ class FireRatingFilter(IExternalEventHandler, Form):
 
 
 form = FireRatingFilter()
-external_event = ExternalEvent.Create(form)
+#external_event = ExternalEvent.Create(form)
 form.ShowDialog()
 
 
-#__window__.Hide()
-#__window__.Close()
+__window__.Hide()
+__window__.Close()
