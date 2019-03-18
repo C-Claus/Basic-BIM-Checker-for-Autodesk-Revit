@@ -1,11 +1,10 @@
 # Basic BIM Checker
-A growing number of players in the construction sector are taking part in the initiative to make use of a basic information delivery manual. The BIM Loket supports this initiative wholeheartedly. This small Add-In is trying to facilitate applying the BIM Basic IDM for everyone.It is a simple lightweight Revit Add-In to check for Categories, 0-Points, Levels, FireRating, Assembly Code and show materials.
+A growing number of players in the construction sector are taking part in the initiative to make use of a basic information delivery manual. The BIM Loket supports this initiative wholeheartedly. This small Add-In is trying to facilitate applying the BIM Basic IDM for everyone. It is a simple lightweight Revit Add-In to check for Categories, 0-Points, Levels, FireRating, Assembly Code and show materials.
 
 
 **Why does this Revit Add-in exist?**
 
 In order to secure and reuse information more efficiently and effectively to share information unambiguously.
-
 For more information, please visit:
 [BIM Basic IDM](https://www.bimloket.nl/upload/documents/downloads/BIMbasisILS/BIM%20basis%20ILS%20EN.pdf)
 
@@ -24,7 +23,7 @@ Installers can be found here:
 
 
 
-[Installer for Revit 2018](https://github.com/C-Claus/BasicBIMChecker/blob/master/Basic_BIM_Checker_installer_REVIT_2018.exe) it wil give a meaningless error when starting Revit.
+[Installer for Revit 2018](https://github.com/C-Claus/BasicBIMChecker/blob/master/Basic_BIM_Checker_installer_REVIT_2018.exe) <- it will give a meaningless error when starting Revit.
 
 [Installer for Revit 2019](https://github.com/C-Claus/BasicBIMChecker/blob/master/Basic_BIM_Checker_installer_REVIT_2019.exe)
 
