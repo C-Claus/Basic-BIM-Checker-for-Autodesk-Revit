@@ -4,7 +4,10 @@ A simple lightweight Revit Add-In to check for Categories, 0-Points, Levels, Fir
 **Why does this Revit Add-in exist?**
 
 In order to secure and reuse information more efficiently and effectively to share information unambiguously.
-https://www.bimloket.nl/upload/documents/downloads/BIMbasisILS/BIM%20basis%20ILS%20EN.pdf
+
+For more information, please visit:
+[BIM Basic IDM](https://www.bimloket.nl/upload/documents/downloads/BIMbasisILS/BIM%20basis%20ILS%20EN.pdf)
+
 
 
 **The Interface on the Add-Ins Ribbon Tab**
