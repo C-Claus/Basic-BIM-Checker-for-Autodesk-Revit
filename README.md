@@ -1,8 +1,8 @@
 # Basic BIM Checker
-A simple lightweight Revit Add-In to check for Categories, 0-Points, Levels, FireRating, Assembly Code and show materials.
+A growing number of players in the construction sector are taking part in the initiative to make use of a basic information delivery manual. The BIM Loket supports this initiative wholeheartedly. This small Add-In is trying to facilitate applying the BIM Basic IDM for everyone.It is a simple lightweight Revit Add-In to check for Categories, 0-Points, Levels, FireRating, Assembly Code and show materials.
+
 
 **Why does this Revit Add-in exist?**
-
 In order to secure and reuse information more efficiently and effectively to share information unambiguously.
 
 For more information, please visit:
