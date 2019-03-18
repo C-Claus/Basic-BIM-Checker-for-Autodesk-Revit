@@ -23,7 +23,7 @@ Installers can be found here:
 
 
 
-[Installer for Revit 2018](https://github.com/C-Claus/BasicBIMChecker/blob/master/Basic_BIM_Checker_installer_REVIT_2018.exe)
+[Installer for Revit 2018](https://github.com/C-Claus/BasicBIMChecker/blob/master/Basic_BIM_Checker_installer_REVIT_2018.exe) it wil give a meaningless error when starting Revit.
 
 [Installer for Revit 2019](https://github.com/C-Claus/BasicBIMChecker/blob/master/Basic_BIM_Checker_installer_REVIT_2019.exe)
 
