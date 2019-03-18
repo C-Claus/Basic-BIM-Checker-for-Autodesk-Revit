@@ -1,7 +1,8 @@
 # Basic BIM Checker
 A simple lightweight Revit Add-In to check for Categories, 0-Points, Levels, FireRating, Assembly Code and show materials.
 
-** Why does this Revit Add-in exist?**
+**Why does this Revit Add-in exist?**
+
 In order to secure and reuse information more efficiently and effectively to share information unambiguously.
 https://www.bimloket.nl/upload/documents/downloads/BIMbasisILS/BIM%20basis%20ILS%20EN.pdf
 
