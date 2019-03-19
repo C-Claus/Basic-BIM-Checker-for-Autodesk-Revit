@@ -1,5 +1,5 @@
 # Basic BIM Checker
-A growing number of players in the construction sector are taking part in the initiative to make use of a basic information delivery manual. The BIM Loket supports this initiative wholeheartedly. This small Add-In is trying to facilitate applying the BIM Basic IDM for everyone. It is a simple lightweight Revit Add-In to check for Categories, 0-Points, Levels, FireRating, Assembly Code and show materials. The Add-In does not produce a simple checklist, it is meant for the Revit user who is able to highlight the unspecified and unclassified elements to conform to a 3D model which meets the Basis IDM (Dutch: Basis ILS) requirements.
+A growing number of players in the construction sector are taking part in the initiative to make use of a basic information delivery manual. The BIM Loket supports this initiative wholeheartedly. This small Add-In is trying to facilitate applying the BIM Basic IDM for everyone. It is a simple lightweight Revit Add-In to check for Categories, 0-Points, Levels, FireRating, Assembly Code and show materials. The Add-In does not produce a simple checklist, it is meant for the Revit user who is able to highlight the unspecified and unclassified elements to conform to a 3D model which meets the Basic IDM (Dutch: Basis ILS) requirements.
 
 
 **Why does this Revit Add-in exist?**
