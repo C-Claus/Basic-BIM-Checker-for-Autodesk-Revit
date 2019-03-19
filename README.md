@@ -44,7 +44,7 @@ Installers can be found here:
 
 **The Panel to filter by Assembly Code inculding Assembly Description**
 
-![picture](https://github.com/C-Claus/BasicBIMChecker/blob/master/images/level_building_storey.png)
+![picture](https://github.com/C-Claus/BasicBIMChecker/blob/master/images/assembly_code_filter.png)
 
 
 
