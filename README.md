@@ -16,6 +16,7 @@ For more information, please visit:
 
 [Basic BIM Checker on YouTube](https://youtu.be/OUUwy4Q31wo)
 
+![picture](https://github.com/C-Claus/Basic-BIM-Checker-for-Autodesk-Revit/blob/master/basic_BIM_checker_for_Revit.gif)
 
 **Installers**
 
